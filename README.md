@@ -100,6 +100,10 @@ maas.chat.completion.url=你的知识模型接口调用地址
 
 配置完成后，启动项目，访问 ip:8088 即可访问本项目的轻量化前端界面，体验对话交互产品的使用效果。
 
+#### 4. 界面说明
+
+![example.png](truebot/img/example.png)
+
 
 ## 前后端分离部署方式
 
