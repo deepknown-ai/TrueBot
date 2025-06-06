@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="icon-remove" d="M8.061,7l5.72-5.72A.75.75,0,1,0,12.719.22L7,5.94,1.281.22A.75.75,0,0,0,.219,1.28L5.939,7,.219,12.72a.75.75,0,1,0,1.061,1.06L7,8.06l5.719,5.72a.75.75,0,1,0,1.061-1.06L8.061,7Z" fill="#333"/>
+    </clipPath>
+  </defs>
+  <g id="icon-remove-2" data-name="icon-remove" clip-path="url(#clip-path)">
+    <rect id="Color" width="24.963" height="24.963" transform="translate(-5.481 -5.481)" fill="#333"/>
+  </g>
+</svg>

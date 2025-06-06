@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no,viewport-fit=cover" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta content="no-referrer" name="referrer">
+    <meta http-equiv="cache-control" content="no-cache">
+    <title>深知开源知识模型</title>
+    <link type="image/x-icon" rel="shortcut icon" href="./img/user-icon.png">
+    <script src='./js/area.js'></script>
+    <script src='./js/config.js'></script>
+    <script src='./js/jquery.min.js'></script>
+    <script src="./js/marked.min.js"></script>
+    <script src="./js/positioning.js"></script>
+    <script src='./js/clipboard.js'></script>
+    <script src='./js/index.js'></script>
+    <link rel="stylesheet" href="./link/base.css">
+    <link rel="stylesheet" href="./link/positioning.css">
+    <link rel="stylesheet" href="./link/style.css">
+</head>
+<body>
+    <div class="czkj-content-body clearfix">
+        <div class="czkj-content-all czkj-container">
+            <div class="czkj-content">
+                <div class="czkj-chat-body">
+                    <div class="zhipu-title">
+                        <span class="czkj-logo-name">深知开源知识模型</span>
+                        <span class="czkj-logo-positioning">
+                            <img src="./img/positioning.svg" alt="">
+                            <span class="positioning-text"></span>
+                        </span>
+                    </div>
+
+                    <div class="yzt-history hide">
+                        <div class="yzt-history-title">
+                            <span class="czkj-logo-name">深知开源知识模型</span>
+                            <span class="czkj-logo-positioning">
+                                <img src="./img/positioning.svg" alt="">
+                                <span class="positioning-text"></span>
+                            </span>
+                        </div>
+                        <div class="yzt-history-content">
+                            <div class="yzt-h-c-title">
+                                <img src="./img/question.svg">提问记录
+                            </div>
+                            <div class="yzt-h-c-log">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dg-modal" style="display: none;">
+                        <div class="dg-modal-body">
+                            <div class="dg-modal-title">
+                            </div>
+                            <div class="dg-modal-content">
+                            </div>
+                            <div class="dg-modal-del">关 闭</div>
+                        </div>
+                    </div>
+
+                    <div class="czkj-chat-center">
+                        <div class="czkj-chat-left">
+                            <ul id="czkj-chat" class='base-scroll no-user-icon'>
+                            </ul>
+                            <div class="czkj-chat-input">
+                                <textarea class='czkj-textarea' placeholder='请输入您想咨询的内容'></textarea>
+                                <div class="czkj-send"></div>
+                                <div class="czkj-enter-btn"></div>
+                                <div class="czkj-voice-identify" id='czkj-voice-identify'></div>
+                                <div class="czkj-chatsse-info hide">
+                                    <div class="yzt-caht-del yzt-operate-del hide">
+                                        <img src="./img/exit.svg" alt="">
+                                        <span class="chatDelText">退出对话</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="czkj-user-btns">
+                                <div class="czkj-user-btn-item czkj-mobile-history">
+                                    历史记录
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhipu-tip zhipuTitleColor chatZhipuTip">
+                            智能问答根据您的提问意图理解，答案内容为 AI 生成，不代表开发者立场，请勿删除或修改本标记。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="czkj-err-msg"></div>
+            <div class="czkj-robot-positioning-modal">
+                <div class="czkj-positioning-modal-content">
+                    <div class="czkj-positioning-modal-title">
+                        <div class="czkj-positioning-modal-name">请选择您的所在区域</div>
+                        <div class="czkj-positioning-tools"><img src="./img/close1.svg" alt="\"></div>
+                    </div>
+                    <div class="czkj-positioning-modal-body">
+                        <div class="czkj-positioning-modal-select"></div>
+                        <div class="czkj-positioning-modal-data"></div>
+                        <div class="czkj-positioning-modal-btn">
+                            <span class="czkj-positioning-determine">确定</span>
+                            <span class="czkj-positioning-cancel">取消</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

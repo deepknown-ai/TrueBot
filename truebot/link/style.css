@@ -1,0 +1,485 @@
+.czkj-textarea {
+    padding-left: 16px;
+    margin-top: 0px;
+}
+.czkj-textarea::placeholder {
+    color: #c4c4c4;
+}
+.czkj-textarea::-webkit-scrollbar, #czkj-chat::-webkit-scrollbar {
+    display: none;
+}
+.zhipu-tip {
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    padding-top: 0;
+    color: #479cfc;
+}
+.zhipu-title {
+    position: relative;
+    padding-top: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    line-height: 36px;
+    font-size: 24px;
+    color: rgb(2, 113, 192);
+    padding-right: 5px;
+}
+.zhipu-title .czkj-logo-radio{
+    top: -80px;
+    width: 110px;
+    height: 110px;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.czkj-content-all {
+    padding-top: 0px;
+    padding-bottom: 156px;
+}
+
+.zhipu-appraisal {
+    display: flex;
+    align-items: center;
+}
+
+.czkj-rele-change {
+    position: absolute;
+    top: -9px;
+    right: 8px;
+    transform: scale(0.9);
+}
+
+#czkj-chat  li.m0 {
+    display: none !important;
+}
+
+.czkj-chatsse-info {
+    top: -25px;
+    height: 24px;
+    background-color: #fff;
+    left: 10px;
+}
+
+.stopChat {
+    bottom: -40px;
+}
+
+.chatgpt-qa {
+    white-space: pre-line;
+}
+.czkj-chat-body{
+    height: 735px;
+}
+.czkj-content-body {
+    display: flex;
+    align-items: center;
+}
+
+.chatgpt-tips {
+    position: static;
+    white-space: normal;
+    font-weight: normal;
+    line-height: 28px;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+    max-height: none;
+}
+
+.dg-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background-color: rgba(73, 71, 71, 0.9);
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    align-items: center;
+}
+.dg-modal-body {
+    padding: 20px 25px;
+    width: 50vw;
+    inset: 0;
+    margin: auto;
+    max-height: 80vh;
+    max-width: 1200px;
+    background-image: linear-gradient(49deg, #e1f3fe 0%, #ffffff 100%);
+    border-radius: 20px;
+}
+.dg-modal-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dg-modal .dg-modal-del {
+    display: block;
+    background-color: #1d6ce9;
+    border-radius: 10px;
+    color: #fff;
+    line-height: 32px;
+    margin: auto;
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+.dg-modal-content {
+    max-height: calc(80vh - 120px);
+    overflow: auto;
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: 1px;
+    padding: 10px 10px 0;
+    margin-bottom: 20px;
+    min-height: 200px;
+}
+
+@media (min-width: 640px) {
+    .zhipu-title {
+        display: none;
+    }
+    .czkj-chat-center {
+        padding-right: 0;
+    }
+    .czkj-content-all {
+        padding-top: 0px;
+        height: 100%;
+        box-sizing: border-box;
+        padding-bottom: 0;
+    }
+    .czkj-chat-left {
+        box-shadow: none;
+        border-radius: 0;
+        padding-bottom: 145px;
+    }
+    #czkj-chat, .czkj-chat-input, .czkj-chatsse-info {
+        background: transparent !important;
+        border: none !important;
+    }
+    .czkj-content {
+        height: 100%;
+        width: 100%;
+    }
+    .czkj-chat-body {
+        height: calc(100% - 80px);
+        margin-top: 30px;
+    }
+    .czkj-chat-center {
+        top: 0;
+        padding-left: 500px;
+        padding-right: 200px;
+    }
+    .czkj-chat-input {
+        border: none !important;
+        background-color: #ffffff !important;
+        box-shadow: 0px 0px 4px 0px rgba(2, 113, 192, 0.14);
+        border-radius: 20px;
+        height: 120px;
+    } 
+    .czkj-textarea {
+        border-radius: 20px;
+    }
+    
+    .czkj-chat-input .czkj-enter-btn {
+        background: url('../img/send1.svg') !important;
+                width: 36px;
+        border-radius: 0;
+        right: 15px;
+    }
+    .czkj-chat-input .czkj-enter-btn.actived {
+        background: url('../img/send2.svg') !important;
+    }
+    .czkj-user .czkj-msg {
+        background-image: linear-gradient(180deg, #56a9fd 0%, #479cfc 0%, #0b5ce7 100%);
+    }
+    .czkj-robot .czkj-msg {
+        box-shadow: none;
+        background: #fff !important;
+    }
+
+    .yzt-history {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 340px;
+        z-index: 1;
+        display: block !important;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding-top: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: #333;
+    }
+    
+    .yzt-history .yzt-history-title {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        margin-left: -6px;
+        justify-content: space-between;
+    }
+    
+    .yzt-history .yzt-history-title .czkj-logo-name {
+        font-size: 18px !important;
+        color: #1D6CE9;
+        white-space: nowrap;
+    }
+    
+    .yzt-history .yzt-history-content {
+        overflow: hidden;
+        padding: 30px 0 10px;
+        height: calc(100% - 70px);
+    }
+    
+    .yzt-history .yzt-history-content .yzt-h-c-title {
+        margin-bottom: 18px;
+        line-height: 14px;
+        font-size: 16px;
+    }
+    
+    .yzt-history .yzt-history-content .yzt-h-c-title img {
+        height: 14px;
+        cursor: pointer;
+        margin-right: 6px;
+    }
+    
+    .yzt-history .yzt-h-c-log .yzt-h-c-l-item {
+        position: relative;
+        padding: 10px 30px 10px 10px;
+        cursor: pointer;
+    }
+    .yzt-history .yzt-h-c-log .yzt-h-c-l-item:hover {
+        background-color: #fff;
+        border-radius: 23px;
+    }
+    
+    .yzt-history .yzt-h-c-log .yzt-h-c-l-item span {
+        background: url("../img/delete.svg") no-repeat right center;
+        position: absolute;
+        right: 16px;
+        height: 24px;
+        width: 14px;
+        cursor: pointer;
+        top: 9px;
+    }
+    
+    .yzt-history .yzt-h-c-log .yzt-h-c-l-item:hover span {
+        display: block;
+    }
+    
+    .yzt-history .yzt-h-c-log .yzt-h-c-l-item div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #333;
+        border: none;
+        padding: 0;
+        font-size: 16px;
+    }
+    .yzt-history .yzt-h-c-log .yzt-h-c-l-item div::before {
+        display: none;
+    }
+    
+    .yzt-history .yzt-h-c-log .yzt-h-c-l-item div:hover {
+        background-color: transparent;
+    }
+    .czkj-special-width .czkj-msg {
+        width: auto;
+    }
+    .czkj-msg, .czkj-textarea{
+        font-size: 16px !important;
+    }
+    .chatsse-data {
+        background-color: #f8fbff;
+    }
+    .chat-load-text .load-item .a, .chat-load-text .load-item .b {
+        background-color: #fff !important;
+    }
+    .czkj-content-body {
+        min-width: 1200px;
+    }
+}
+
+@media (max-width: 640px) {
+    html, body{
+        overflow: auto;
+    }
+   
+    .czkj-content-body{
+        height: 100%;
+        overflow: hidden;
+        display: block;
+    }
+    .czkj-chat-body {
+        height: 100%;
+        background-color: #fff;
+    }
+    .czkj-content-all {
+        padding: 0;
+    }
+    .czkj-content {
+        max-width: 100%;
+    }
+    .zhipu-title {
+        padding-top: 0;
+        padding-left: 0;
+        height: 56px;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-size: 100% 100%;
+        font-size: 16px;
+        padding: 0 10px;
+        white-space: nowrap;
+        flex-wrap: wrap;
+    }
+    .czkj-chat-center {
+        top: 56px;
+        height: calc(100% - 56px);
+    }
+    .zhipu-title .czkj-logo-radio {
+        height: 32px;
+        width: 32px;
+        top: 8px;
+        left: 10px;
+        margin: initial;
+        position: static;
+    }
+    .zhipu-title .czkj-logo-name {
+        font-size: 16px !important;
+        width: auto;
+        line-height: 56px;
+        margin-left: 0;
+        text-align: left;
+    }
+    .czkj-user-btns, .czkj-chat-input {
+        background-color: #fff;
+    }
+    
+    .czkj-chat-input .czkj-textarea {
+        height: 40px;
+        line-height: 18px;
+        width: calc(100% - 0px) !important;
+        background-color: #ffffff;
+	    box-shadow: 0px 1px 4px 0px 
+		rgba(0, 0, 0, 0.16);
+        border: none;
+        padding-right: 50px;
+    } 
+    
+    .zhipu-tip, .czkj-server {
+        display: none;
+    }
+    
+    .zhipu-title.area .zhipuTitleColor {
+        display: none;
+    }
+    .zhipu-title.area .czkj-logo-name {
+        min-width: 60px;
+        max-width: calc(100% - 110px);
+        font-size: 14px !important;
+    }
+    
+    .czkj-msg {
+        max-width: 96%;
+        box-shadow: none;
+    }
+    .czkj-special-width .czkj-msg {
+        width: 96%;
+    }
+    #czkj-chat li.czkj-robot {
+        padding-left: 55px;
+    }
+    #czkj-chat.no-user-icon .czkj-user {
+        padding-right: 15px;
+    }
+    
+    .zhipu-title-img {
+        position: absolute;
+        left: 10px;
+        height: 20px;
+    }
+   
+    .czkj-logo-positioning .positioning-text {
+        white-space: normal;
+        line-height: 20px;
+        max-height: 60px;
+        font-size: 14px;
+    }
+   
+    .czkj-chat-center .czkj-chat-left {
+        height: calc(100% - 0px);
+        padding-bottom: 40px;
+    }
+    .czkj-chat-center .czkj-chat-left .czkj-chat-input {
+        bottom: 35px;
+        padding: 10px 15px;
+        border: none !important;
+    }
+    #czkj-chat {
+        border: none !important;
+        height: calc(100% - 78px);
+    }
+    .czkj-chat-center .czkj-chat-left .czkj-user-btns {
+        bottom: 10px;
+        opacity: 1;
+        height: 26px;
+        display: flex;
+        padding-left: 110px;
+        align-items: center;
+    }
+    .czkj-chat-center .czkj-chat-left .czkj-user-btns.ragFlag {
+        padding-left: 15px;
+    }
+    .accessrag {
+        bottom: -25px;
+        padding: 3px 6px;
+        top: auto; 
+        left: 15px;
+    }
+    .czkj-user-btn-item {
+        width: auto !important;
+        background-color: #efefef;
+        top: 0;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 6px;
+        margin-right: 10px;
+        border-radius: 6px;
+    }
+    .czkj-send {
+        background: url("../img/wapsend.svg") no-repeat center !important;
+        top: 12px;
+        height: 36px;
+        width: 36px;
+        background-color: #fff !important;
+        right: 20px;
+    }
+   
+    .czkj-chatsse-info {
+        top: -20px;
+    }
+    
+    .czkj-chatsse-info .yzt-caht-del {
+        white-space: nowrap;
+        font-size: 14px;
+    }
+    .dg-modal-body {
+        width: 96%;
+        max-height: 92%;
+    }
+    .dg-modal-footer {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
