@@ -63,6 +63,7 @@ robotServerSseChat方法发起SSE请求。
 - **area**: 地域信息。
 - **stream**: 流式与非流式接口选择项， true-流式，false-非流式。
 - **material**: 是否需要参考资料，true-需要， false-不需要。
+- **item**: 是否需要推荐事项，true-需要， false-不需要。
 - **model**: R1-使用deepseek R1版本。
 
 
