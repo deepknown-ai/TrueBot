@@ -203,7 +203,7 @@
                 model: chatRagId,
                 material: true,
                 stream: true,
-                sseAddStream: true,
+                item: true,
                 messages: [{
                     role: 'user',
                     content: text
@@ -230,7 +230,7 @@
             let isSswFirst = true;
             let isSearchResult = true
             let urlz = robotSetting.chatUrl;
-            let reasoningHtmlAll = '', contentHtmlAll = '';
+            let reasoningHtmlAll = '', contentHtmlAll = '', recommendation = [];
             $('.chat-stop').addClass('active');
             allowChatRoll = true;
             fetch(urlz, {
@@ -265,6 +265,7 @@
                                     chatScrollBottom()
                                 }
                                 let searchResult = datass.referenceMaterials || [];
+                                if(datass.recommendationItems) recommendation = datass.recommendationItems || [];
                                 if((choices.message && (choices.message.reasoning_content || choices.message.content)) || (searchResult.length && isSearchResult)) {
                                     if(isSswFirst) {
                                         isSswFirst = false;
@@ -310,7 +311,7 @@
                                         $('.' + classz).siblings('.reasoning_value').html(reasoningHtml).show()
                                         $('.' + classz).siblings('.waitText').show()
                                     }
-                                   
+
                                     if(choices.message && choices.message.tip) {
                                         $('.' + classz).siblings('.chatgpt-tips').html(choices.message.tip);
                                     }
@@ -366,6 +367,8 @@
                         $('.' + classz).parents('.czkj-msg').find('.chatSseName').text('共获取'+ $('.' + classz).parents('.czkj-msg').find('.chatsse-note-item').length +'份资料');
                         let chatOperateHtml = '<div class="czkj-chat-copy" data-classz="' + classz + '"><span class="chatgpt-copy pointer" title="复制"></span></div>';
                         $('.' + classz).parents('.czkj-msg').append(chatOperateHtml);
+                        addRecommendation(recommendation, classz) 
+
                         setTimeout(function () {
                             if(allowChatRoll) chat.scrollTop = chat.scrollHeight;
                         }, 0);
@@ -383,6 +386,59 @@
 
             });
         }
+
+        //添加推荐事项
+        function addRecommendation(recommendation, classz) {
+            let recommendationHtml = '';
+            recommendation.forEach(function(item) {
+                if(item.title) {
+                    let onlineProcess = ''
+                    if(item.onlineProcessUrls&& item.onlineProcessUrls.length) {
+                        onlineProcess = '<span class="btn goExternalUrl" data-url="'+ item.onlineProcessUrls[0] +'">一键办理<img alt="" src="./img/matter-bl.svg"></span>'
+                    } 
+                    recommendationHtml += '<div class="item '+ (!onlineProcess ? '' : 'hasBtn') +'"> <span class="name goExternalUrl '+ (item.sourceUrl?'active': '')+'" data-url="'+ item.sourceUrl +'">'+ (item.title) +'</span> <span class="unit"> <span class="left">实施单位：</span> <span class="right">'+item.unit+'</span></span>';
+                    if(item.itemCategory) {
+                        recommendationHtml += '<span class="target"> <span class="left">服务对象：</span> <span class="right">'+item.itemCategory+'</span></span>'
+                    }
+                    recommendationHtml += onlineProcess + '</div>'
+                }
+            })
+
+            if(recommendationHtml) {
+                $('.' + classz).parents('.czkj-msg').after('<div class="recommend-matter '+classz+'-matter"> <div class="title">推荐事项</div> <div class="content"> '+ recommendationHtml +' </div> <span class="recommend-matter-left hide"></span> <span class="recommend-matter-right hide"></span></div>');
+                if($('.'+classz+'-matter .item').length * 290 - $('.'+classz+'-matter .content').width() > 80) {
+                    $('.'+classz+'-matter').find('.recommend-matter-right').show()
+                };
+
+                $('.'+classz+'-matter .content').on('scroll', function(e) {
+                    let that = $(this)
+                    that.siblings('.recommend-matter-right').show()
+                    that.siblings('.recommend-matter-left').show()
+                    if(that[0].scrollLeft < 5) {
+                        that.siblings('.recommend-matter-left').hide()
+                    }
+                    if(that[0].scrollWidth - that[0].clientWidth - that[0].scrollLeft < 5) {
+                        that.siblings('.recommend-matter-right').hide()
+                    }
+                })
+            }
+        }
+        
+        $(document).on('click', '.recommend-matter-left', function(e) {
+            let content = $(this).siblings('.content')
+            $(this).siblings('.recommend-matter-right').show()
+            content.animate({scrollLeft: content.scrollLeft() - 290}, 500);
+        })
+
+        $(document).on('click', '.recommend-matter-right', function(e) {
+            let content = $(this).siblings('.content')
+            $(this).siblings('.recommend-matter-left').show()
+            content.animate({scrollLeft: content.scrollLeft() + 290}, 500);
+        })
+
+        $(document).on('click', '.goExternalUrl', function(e) {
+            if($(this).data('url') && $(this).data('url') !== 'undefined') window.open($(this).data('url'))
+        })
 
         //新增用户信息
         function appendUserMsg(msg) {
