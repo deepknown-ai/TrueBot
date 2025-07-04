@@ -14,8 +14,11 @@ public class Chat {
     private String area;
     private String platform;
     private boolean stream;
-    private boolean sseAddStream;
     private boolean material;
+    private boolean item;
+
+    private boolean policy;
+
     private List<Message> messages;
 
     public String getUserId() {
@@ -66,13 +69,6 @@ public class Chat {
         this.stream = stream;
     }
 
-    public boolean isSseAddStream() {
-        return sseAddStream;
-    }
-
-    public void setSseAddStream(boolean sseAddStream) {
-        this.sseAddStream = sseAddStream;
-    }
 
     public boolean isMaterial() {
         return material;
@@ -80,6 +76,22 @@ public class Chat {
 
     public void setMaterial(boolean material) {
         this.material = material;
+    }
+
+    public boolean isItem() {
+        return item;
+    }
+
+    public void setItem(boolean item) {
+        this.item = item;
+    }
+
+    public boolean isPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(boolean policy) {
+        this.policy = policy;
     }
 
     public List<Message> getMessages() {
@@ -97,6 +109,7 @@ public class Chat {
         public String getRole() {
             return role;
         }
+
         public void setRole(String role) {
             this.role = role;
         }
@@ -104,6 +117,7 @@ public class Chat {
         public String getContent() {
             return content;
         }
+
         public void setContent(String content) {
             this.content = content;
         }
