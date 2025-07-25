@@ -435,17 +435,18 @@
         opacity: 1;
         height: 26px;
         display: flex;
-        padding-left: 110px;
+        padding-left: 183px;
         align-items: center;
     }
-    .czkj-chat-center .czkj-chat-left .czkj-user-btns.ragFlag {
-        padding-left: 15px;
-    }
-    .accessrag {
+ 
+    .accessrag, .websearch {
         bottom: -25px;
         padding: 3px 6px;
         top: auto; 
         left: 15px;
+    }
+    .websearch {
+        left: 110px;
     }
     .czkj-user-btn-item {
         width: auto !important;
