@@ -16,8 +16,8 @@ public class Chat {
     private boolean stream;
     private boolean material;
     private boolean item;
-
     private boolean policy;
+    private boolean search = true;
 
     private List<Message> messages;
 
@@ -92,6 +92,14 @@ public class Chat {
 
     public void setPolicy(boolean policy) {
         this.policy = policy;
+    }
+
+    public boolean isSearch() {
+        return search;
+    }
+
+    public void setSearch(boolean search) {
+        this.search = search;
     }
 
     public List<Message> getMessages() {
