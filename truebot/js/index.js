@@ -36,7 +36,7 @@
            
         }
         var robotFootHtml = '</div></li>'
-        var chatRagId
+        var chatRagId, webSearch = false;
         var languageObj = {
             manyWords: '输入字数过多，请精简后咨询',
             youInformation: '请输入你的问题',
@@ -51,7 +51,7 @@
         }
         $('#czkj-chat').append(robotHeadHtml('czkj-welcome-msg czkj-special-width') + '你好，这是深知智能MaaS服务知识模型开源前端，您可以在这里体验知识模型接口的问答效果。' + robotFootHtml)
         
-        setAccessRag();//添加 深度解读(R1) 选项
+        setAccessRag();//添加 深度解读(R1) 和 联网搜索 选项
         setPositioningz();//初始化地域
 
         $('.czkj-enter-btn').click(function () {//点击发送按钮
@@ -65,14 +65,21 @@
                 "id": "R1",
                 "name": "深度解读(R1)",
             };
-            let ragHtml = '<div class="accessrag" data-id="'+ rag.id +'">'+ rag.name +'</div>';
+            let ragHtml = '<div class="accessrag" data-id="'+ rag.id +'">'+ rag.name +'</div> <div class="websearch">联网搜索</div>';
             $('.czkj-chat-input').addClass('rag').append(ragHtml);
             $(document).on('click', '.accessrag', function() {
                 $(this).toggleClass('active');
                 chatRagId = undefined;               
                 if($(this).hasClass('active')) chatRagId = $(this).data('id');
             })
+
+            $(document).on('click', '.websearch', function() {
+                $(this).toggleClass('active');
+                webSearch = $(this).hasClass('active');
+            })
+
             $('.accessrag').trigger('click')
+            $('.websearch').trigger('click')
         }
 
         //显示移动端操作栏
@@ -201,6 +208,7 @@
                 userId: userId,
                 sessionId: sessionId,
                 model: chatRagId,
+                search:webSearch,
                 material: true,
                 stream: true,
                 item: true,
