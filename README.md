@@ -15,7 +15,7 @@
 TrueBot具有以下显著特点：
 - **简单易用：** 界面友好，操作流程高度简化，可快速上手使用。
 - **布局清晰：** 采用对话流式布局，边侧栏展示提问记录，区域清晰，体验感高。
-- **开源免费：** 本项目遵循MIT开源协议，100%源代码开源。
+- **代码开源：** 本项目遵循MIT开源协议，100%源代码开源。
 - **响应式设计：** 在台式机、笔记本电脑和移动设备上提供无缝体验。
 - **Markdown支持：** 通过全面的Markdown功能提升您的交互体验，实现丰富的交互。
 - **多浏览器支持：** 对常见的浏览器，如 Chrome、Safari、Edge 等，均有良好的兼容性。
@@ -43,35 +43,68 @@ TrueBot/
 │   ├── js/                                  # 业务逻辑脚本
 │   ├── link/                                # 样式表文件
 │   └── index.html                           # 主页面
+├── truebot-vue/                             # vue资源目录
+│   ├── public/                              # 公共资源
+│   ├── src/                                 # 源代码
+│   │   ├── assets/                          # 静态资源
+│   │   ├── js/                              # 配置js
+│   │   ├── App.vue                          # 根组件
+│   │   └── main.js                          # 入口 JS 文件
+│   │
+│   ├── babel.config.js                      # Babel 配置文件
+│   ├── jsconfig.json                        # JavaScript 配置文件
+│   ├── package.json                         # 包配置文件
+│   ├── package-lock.json                    # 包锁定文件
+│   └── vue.config.js                        # Vue 配置文件
 ├── LICENSE                                  # 开源协议
 ├── pom.xml                                  # Maven 构建文件
 └── README.md                                # 项目说明文档
 ```
 
 ## 前端服务使用说明
-前端代码位于truebot文件夹下，为原生JS开发。
 
-### 1.area.js 地域数据文件
+### 原生JS开发
+前端代码位于truebot文件夹下，具体内容如下：
 
-### 2.config.js 配置文件
+#### 1.地域数据文件:truebot/js/area.js
+
+#### 2.配置文件:truebot/js/config.js
 - chatUrl: 后端封 知识模型接口 后提供的地址。
 
-### 3.index.js 主要逻辑文件
+#### 3.主要逻辑文件:truebot/js/index.js 
 robotServerSseChat方法发起SSE请求。
 
 **主要请求参数**
 - **area**: 地域信息。
 - **stream**: 流式与非流式接口选择项， true-流式，false-非流式。
 - **material**: 是否需要参考资料，true-需要， false-不需要。
-- **item**: 是否需要推荐事项，true-需要， false-不需要。
 - **model**: R1-使用deepseek R1版本。
 
+#### 4.切换地域相关逻辑文件:truebot/js/positioning.js
 
-### 4.positioning.js 切换地域相关逻辑文件
-
-### 5.marked.min.js Markdown解析器
+#### 5.Markdown解析器:truebot/js/marked.min.js
 接口输出的内容是markdown格式，需要解析后进行展示。
 
+### VUE框架开发
+前端代码位于truebot-vue下，具体内容如下：
+
+#### 1.地域数据文件:truebot-vue/src/js/area.js
+
+#### 2.配置文件:truebot-vue/src/js/config.js
+- chatUrl: 后端封 知识模型接口 后提供的地址。
+
+#### 3.启动说明
+
+进入truebot-vue文件下后，执行以下命令：  
+安装: `npm install`  
+打包: `npm run build`   
+打包完成后，修改 `pom.xml` 文件中 properties 的 static.resource.dir 属性为如下内容：
+```xml
+<properties>
+  <static.resource.dir>truebot-vue/dist</static.resource.dir>
+</properties>
+```
+完成配置后，启动后端项目。
 
 ## 后端服务使用说明
 
@@ -87,7 +120,7 @@ robotServerSseChat方法发起SSE请求。
 
 #### 2. 修改配置文件
 
-将上述内容填写到 `application.properties` 文件中：
+将上述内容填写到 `src/resources/application.properties` 文件中：
 
 ```properties
 # MaaS平台授权信息
@@ -95,6 +128,21 @@ maas.appKey=你的AppKey
 maas.appSecret=你的AppSecret
 # MaaS知识模型接口地址
 maas.chat.completion.url=你的知识模型接口调用地址
+```
+
+根据项目类型在`pom.xml`修改前端资源目录：
+
+- Vue 构建，目录为：`truebot-vue/dist`
+  > **注意：首次部署或更新代码后需在 truebot-vue 文件夹下执行以下命令完成构建**  
+  > 安装: `npm install`  
+  > 打包: `npm run build`  
+- 原生静态资源，目录为：`truebot`  
+
+`pom.xml` 文件配置示例：
+```xml
+<properties>
+  <static.resource.dir>truebot-vue/dist</static.resource.dir>
+</properties>
 ```
 
 #### 3. 启动项目

@@ -17,6 +17,7 @@
         <fastjson.version>2.0.52</fastjson.version>
         <common-lang3.version>3.12.0</common-lang3.version>
         <bcprov-jdk15on.version>1.70</bcprov-jdk15on.version>
+        <static.resource.dir>truebot</static.resource.dir>
     </properties>
     <dependencies>
         <dependency>
@@ -130,7 +131,7 @@
                 <directory>src/main/resources</directory>
             </resource>
             <resource>
-                <directory>truebot</directory>
+                <directory>${static.resource.dir}</directory>
                 <targetPath>static</targetPath>
                 <includes>
                     <include>**/*</include>
