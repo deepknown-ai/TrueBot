@@ -6,17 +6,17 @@
 var selectAreaId = 0;
 function setPositioningz() {//地域初始化
     $('.czkj-positioning-determine').before('<span class="czkj-positioning-noselecttip">该地域不可选择</span>')
-    let id = 2, areaName = '', areaLongName = '';//id是默认地域ID， 2是北京市
+    let id = 11, areaName = '', areaLongName = '';//id是默认地域ID， 11是北京市
     selectAreaId = id;
     if(id == AreaInfo.areaId) {
         areaName = AreaInfo.name
-        areaLongName = AreaInfo.longName
+        areaLongName = AreaInfo.name
     }else {
         function seekAreaz(data) {
             data && data.forEach(function(item1) {
                 if(item1.areaId == id) {
                     areaName = item1.name
-                    areaLongName = item1.longName
+                    areaLongName = item1.name
                 }else {
                     seekAreaz(item1.childAreaInfos)
                 }
@@ -28,17 +28,17 @@ function setPositioningz() {//地域初始化
 
     function initPosition() {
         $('.czkj-positioning-modal-select').empty().hide()
-        $('.czkj-positioning-modal-data').html('<span class="setAreaId" data-long="'+ AreaInfo.longName +'" data-id="'+ AreaInfo.areaId +'">'+ AreaInfo.name +'</span>');
+        $('.czkj-positioning-modal-data').html('<span class="setAreaId" data-long="'+ AreaInfo.name +'" data-id="'+ AreaInfo.areaId +'">'+ AreaInfo.name +'</span>');
         $('.czkj-positioning-modal-data .setAreaId:first-child').trigger('click');//默认触发第一级事件
         //初始化时回显选中状态
         
         if(selectAreaId != AreaInfo.areaId) {
             function seekAreaa(data) {
                 data && data.forEach(function(item1) {
-                    if(areaLongName === item1.longName) {
+                    if(areaLongName === item1.name) {
                         $('.czkj-positioning-modal-data .setAreaId[data-id="'+ item1.areaId +'"]').trigger('click');
                         return;
-                    }else if(JSON.stringify(item1.childAreaInfos).includes(areaLongName)) {
+                    }else if(item1.childAreaInfos && JSON.stringify(item1.childAreaInfos).includes(areaLongName)) {
                         $('.czkj-positioning-modal-data .setAreaId[data-id="'+ item1.areaId +'"]').trigger('click');
                         seekAreaa(item1.childAreaInfos)
                         return;
@@ -63,10 +63,10 @@ function setPositioningz() {//地域初始化
             
             let html1 = '';
             AreaInfo.childAreaInfos && AreaInfo.childAreaInfos.forEach(function(item) {
-                html1 += '<span class="setAreaId" data-long="'+ item.longName +'" data-id="'+ item.areaId +'">'+ item.name +'</span>'
+                html1 += '<span class="setAreaId" data-long="'+ item.name +'" data-id="'+ item.areaId +'">'+ item.name +'</span>'
             })
             $('.czkj-positioning-modal-data').html(html1)
-            if(!AreaInfo.enabled) {
+            if(!!AreaInfo.enabled) {
                 $('.czkj-positioning-determine').addClass('active');
                 $('.czkj-positioning-noselecttip').show();
             }else {
@@ -81,7 +81,7 @@ function setPositioningz() {//地域初始化
                 if(item.areaId == selectId) {
                     enabled = item.enabled
                     item.childAreaInfos && item.childAreaInfos.forEach(function(item) {
-                        dataz += '<span class="setAreaId" data-long="'+ item.longName +'" data-id="'+ item.areaId +'">'+ item.name +'</span>'
+                        dataz += '<span class="setAreaId" data-long="'+ item.name +'" data-id="'+ item.areaId +'">'+ item.name +'</span>'
                     })
                 }else {
                     getChildAreaInfo(item.childAreaInfos)
@@ -91,7 +91,7 @@ function setPositioningz() {//地域初始化
         getChildAreaInfo(AreaInfo.childAreaInfos, selectId)
         if(!dataz) {
             $(this).addClass('active');
-            if(!enabled) {
+            if(!!enabled) {
                 $('.czkj-positioning-determine').addClass('active');
                 $('.czkj-positioning-noselecttip').show();
             }else {
@@ -101,7 +101,7 @@ function setPositioningz() {//地域初始化
             return
         }
         $('.czkj-positioning-modal-data').html(dataz);
-        if(!enabled) {
+        if(!!enabled) {
             $('.czkj-positioning-determine').addClass('active');
             $('.czkj-positioning-noselecttip').show();
         }else {
@@ -118,10 +118,10 @@ function setPositioningz() {//地域初始化
             $(this).nextAll().remove()
             let html1 = '';
             AreaInfo.childAreaInfos && AreaInfo.childAreaInfos.forEach(function(item) {
-                html1 += '<span class="setAreaId" data-long="'+ item.longName +'" data-id="'+ item.areaId +'">'+ item.name +'</span>'
+                html1 += '<span class="setAreaId" data-long="'+ item.name +'" data-id="'+ item.areaId +'">'+ item.name +'</span>'
             })
             $('.czkj-positioning-modal-data').html(html1);
-            if(!AreaInfo.enabled) {
+            if(!!AreaInfo.enabled) {
                 $('.czkj-positioning-determine').addClass('active');
                 $('.czkj-positioning-noselecttip').show();
             }else {
@@ -139,7 +139,7 @@ function setPositioningz() {//地域初始化
                     if(item.areaId == selectId) {
                         enabled = item.enabled;
                         item.childAreaInfos && item.childAreaInfos.forEach(function(item) {
-                            dataz += '<span class="setAreaId" data-long="'+ item.longName +'" data-id="'+ item.areaId +'">'+ item.name +'</span>'
+                            dataz += '<span class="setAreaId" data-long="'+ item.name +'" data-id="'+ item.areaId +'">'+ item.name +'</span>'
                         })
                     }else {
                         getChildAreaInfo(item.childAreaInfos)
@@ -148,7 +148,7 @@ function setPositioningz() {//地域初始化
             }
             getChildAreaInfo(AreaInfo.childAreaInfos)
             $('.czkj-positioning-modal-data').html(dataz);
-            if(!enabled) {
+            if(!!enabled) {
                 $('.czkj-positioning-determine').addClass('active');
                 $('.czkj-positioning-noselecttip').show();
             }else {

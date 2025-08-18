@@ -224,7 +224,7 @@ const showModal = ref(false);
 const modalTitle = ref('');
 const modalContent = ref('');
 const showPositioning = ref(false);
-const selectedAreaId = ref(2);
+const selectedAreaId = ref(11);
 const selectedAreaName = ref('');
 const selectedAreas = ref([]);
 const currentAreas = ref([]);
@@ -616,7 +616,7 @@ const initPosition = () => {
   if (selectedAreaId.value != areaData.areaId) {
     function seekAreaa(data) {
       data && data.forEach((item1) => {
-        if (selectedAreaLongName.value === item1.longName) {
+        if (selectedAreaLongName.value === item1.name) {
           selectedAreas.value.push(item1)
           if (item1.childAreaInfos && item1.childAreaInfos.length) {
             currentAreas.value = [...item1.childAreaInfos]
@@ -628,7 +628,7 @@ const initPosition = () => {
               it.active = it.areaId == selectedAreaId.value ? true : false;
             })
           }
-        } else if (JSON.stringify(item1.childAreaInfos).includes(selectedAreaLongName.value)) {
+        } else if (item1.childAreaInfos && JSON.stringify(item1.childAreaInfos).includes(selectedAreaLongName.value)) {
           selectedAreas.value.push(item1)
           currentAreas.value = [...item1.childAreaInfos]
           seekAreaa(item1.childAreaInfos)
@@ -674,7 +674,7 @@ const confirmArea = () => {
   selectedAreaName.value = lastArea.name;
 
   selectedAreaId.value = lastArea.areaId
-  selectedAreaLongName.value = lastArea.longName;
+  selectedAreaLongName.value = lastArea.name;
 
   hidePositioningModal();
 };
